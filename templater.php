@@ -8,17 +8,17 @@ function templater($template, $data) {
  return strtr($template, $processedData);
 }
 
-// function getSubtasksTemplate($subtasks) {
-//     $result = array_reduce( getSubtaskTemplate($item), $subtasks);
-//     return '<div>'.$result.'</div>';
-// }
+function getSubTaskTemplate($subTask) {
+    $id = $subTask['id'];
+    $name = $subTask['name'];
+    $hours = $subTask['hours'];
+    return "
+    <form action = '/' method='post'>
+        <input type='text' placeholder='".$name."' name='subtaskName' onchange=''>
 
-// function getSubtaskTemplate($subtask) {
-//     return 
-//    "
-//    <div>
-//         $subtask->name, $subtask->hours
+        <input type='text' placeholder='".$hours."' name='subtaskHours' onchange=''>
 
-//     </div>
-//    ";
-// } 
+        <input type='submit' value='delete' name='subtaskDelete".$id."'>
+    </form>
+    ";
+}

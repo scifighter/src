@@ -54,21 +54,6 @@ function session_getSubTasks() {
     }
 }
 
-function session_getSubTaskTemplate($subTask) {
-    $id = $subTask['id'];
-    $name = $subTask['name'];
-    $hours = $subTask['hours'];
-    return "
-    <form action = '/' method='post'>
-        <input type='text' placeholder='".$name."' name='subtaskName' onchange=''>
-
-        <input type='text' placeholder='".$hours."' name='subtaskHours' onchange=''>
-
-        <input type='submit' value='delete' name='subtaskDelete".$id."'>
-    </form>
-    ";
-}
-
 function session_editTask () {
 
 }

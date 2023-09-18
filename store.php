@@ -39,13 +39,6 @@ function getSubTasks()
     return $func();
 }
 
-function getSubTaskTemplate($subTask)
-{
-    global $current_data_store;
-    $func = getFuncName($current_data_store, 'getSubTaskTemplate');
-    return $func($subTask);
-}
-
 /* Update */
 function editTask()
 {
