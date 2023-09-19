@@ -11,14 +11,33 @@ function templater($template, $data) {
 function getSubTaskTemplate($subTask) {
     $id = $subTask['id'];
     $name = $subTask['name'];
-    $hours = $subTask['hours'];
+    $hours = "subTaskHours".$subTask['hours'];
     return "
-    <form action = '/' method='post'>
-        <input type='text' placeholder='".$name."' name='subtaskName' onchange=''>
+    <form action = '/' method='post' name = '".$id."' onchange=document.forms['".$id."'].submit();>
+        Название подзадачи<br>
+        <input value = '".$subTask['name']."' type='text' name='subTaskName'>
+        <br>Количество часов<br>
+        <input value = '".$subTask['hours']."' type='number' name='subTaskHours'>
+        <br>
+        <input type = 'submit' name='subTaskDelete' value = 'удалить'>
 
-        <input type='text' placeholder='".$hours."' name='subtaskHours' onchange=''>
-
-        <input type='submit' value='delete' name='subtaskDelete".$id."'>
+        <input type='hidden' name='subTaskId' value='".$id."'>
     </form>
+    <br>
+    ";
+}
+
+function getTask() {
+    if(isset($_SESSION['task'])) {
+        $task = $_SESSION['task'];
+    } else {
+        $task = "";
+    }
+    return "
+        Название задачи
+        <form action = '/'' method = 'post' name = 'task' onchange=document.forms['task'].submit();>
+            <input type = 'text' name = 'task' value = '".$task."'>
+        </form>
+        <br>
     ";
 }
