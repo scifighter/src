@@ -10,27 +10,26 @@ if (isset($_POST['addSubtask'])) {
 }
 
 if (isset($_POST['reset'])) {
-    unset($_SESSION['task']);
-    unset($_SESSION['subtasks']);
-    header('Location: index.php');
+    resetPage();
 }
 
 if (isset($_POST['subTaskName'])) {
-     $_SESSION['subtasks'][$_POST['subTaskId']]['id'] = $_POST['subTaskId'];
-     $_SESSION['subtasks'][$_POST['subTaskId']]['name'] = $_POST['subTaskName'];
+    saveSubTask($_POST['subTaskName']);
 }
 
 if (isset($_POST['subTaskHours'])) {
-    $_SESSION['subtasks'][$_POST['subTaskId']]['id'] = $_POST['subTaskId'];
-    $_SESSION['subtasks'][$_POST['subTaskId']]['hours'] = $_POST['subTaskHours'];
+    saveSubTask($_POST['subTaskHours']);
 }
 
 if (isset($_POST['subTaskDelete'])) {
-    unset($_SESSION['subtasks'][$_POST['subTaskId']]);
+    subTaskDelete($_POST['subTaskId']);
 }
 
+if (isset($_POST['saveTask'])) {
+    saveTask();
+}
 if (isset($_POST['task'])) {
-    $_SESSION['task'] = $_POST['task'];
+    addTask($_POST['task']);
 }
 if($_SESSION['subtasks'] == NULL || !$_SESSION['subtasks']){
     addSubTask();
