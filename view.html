@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <div class = "container">
+        {{task}}
+        <div class = 'subTasks'>
+            <div class = 'header'>Список Подзадач</div>
+        {{subtasks}}
+        </div>
 
-    {{task}}
+        <div class = 'addButton'>
+            <form action="/" method="post">
+                <input type="submit" value="Добавить подзадачу" name="addSubtask">
+            </form>
+        </div>
 
-    {{subtasks}}
-    <br>
-    <form action="/" method="post">
-        <input type="submit" value="add subtask" name="addSubtask">
-    </form>
-    <br>
-    <form action="/" method="post">
-
-        <input type="submit" value="reset" name="reset">
-
-    </form>
-    <br>
-    <form action="/" method="post">
-
-        <input type="submit" value="save task" name="saveTask">
-        
-    </form>
+        <div class = "finishButtons">
+            <form action="/" method="post">
+                <input type="submit" value="Сохранить в Localstorage" name="saveTask">
+            </form>
+            <form action="/" method="post">
+                <input type="submit" value="Новая задача" name="reset">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

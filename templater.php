@@ -13,17 +13,18 @@ function getSubTaskTemplate($subTask) {
     $name = $subTask['name'];
     $hours = "subTaskHours".$subTask['hours'];
     return "
+    <div class = 'subTaskForm'>
     <form action = '/' method='post' name = '".$id."' onchange=document.forms['".$id."'].submit();>
-        Название подзадачи<br>
+
         <input value = '".$subTask['name']."' type='text' name='subTaskName'>
-        <br>Количество часов<br>
+
         <input value = '".$subTask['hours']."' type='number' name='subTaskHours'>
-        <br>
-        <input type = 'submit' name='subTaskDelete' value = 'удалить'>
+        
+        <input type = 'submit' name='subTaskDelete' value = 'Remove'>
 
         <input type='hidden' name='subTaskId' value='".$id."'>
     </form>
-    <br>
+    </div>
     ";
 }
 
@@ -34,10 +35,12 @@ function getTask() {
         $task = "";
     }
     return "
-        Название задачи
+    <div class = 'task'>
+        <div class = 'header'>Название задачи</div>
         <form action = '/'' method = 'post' name = 'task' onchange=document.forms['task'].submit();>
             <input type = 'text' name = 'task' value = '".$task."'>
         </form>
         <br>
+    </div>
     ";
 }
