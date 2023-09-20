@@ -43,39 +43,11 @@ function session_getSubTasks() {
     }
 }
 
+
 function session_saveTask() {
     if(isset($_SESSION['task'])) {
-        $dir = opendir ("tasks");
-        $taskName = $_SESSION['task'];
-        $fileCounter = 0;
-        while (false !== ($file = readdir($dir))) {
-            if (strpos($file, '.txt',1) ) {
-               $fileCounter++;
-           }
-        }
-        $taskFileName = $fileCounter + 1;
-        $fd = fopen("tasks/task".$taskFileName.".txt", 'w') or die("Не удалось создать файл");
-        $str = "+----+-------+----------------------------------------------------------------------+
-|                                   ".$taskName."
-+----+-------+----------------------------------------------------------------------+";
-        fwrite($fd, $str);
-        $counter = 0;
-
-        foreach($_SESSION['subtasks'] as $value) {
-            $counter++;
-            if($value['name'] || $value['hours']) {
-            $subTaskName = $value['name'];
-            $subTaskHours = $value['hours'];
-            $str = "
-_№".$counter."|".$subTaskHours."_часы|_".$subTaskName."
-+----+-------+----------------------------------------------------------------------+";
-            fwrite($fd, $str);
-            } else {
-                break;
-            }
-        }
-        resetPage();
+        localSave($_SESSION['task'], $_SESSION['subtasks']);
     } else {
-        echo "Укажите название задачи";
+        echo "<div class = 'container'>УКАЖИТЕ НАЗВАНИЕ ЗАДАЧИ<div>";
     }
 }

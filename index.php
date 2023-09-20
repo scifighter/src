@@ -1,7 +1,7 @@
 <?php
 require_once('store.php');
 require_once('templater.php');
-
+require_once('file.php');
 $testVar = 'Hello world';
 $templateFile = 'view.html';
 
@@ -27,6 +27,7 @@ if (isset($_POST['subTaskDelete'])) {
 
 if (isset($_POST['saveTask'])) {
     saveTask();
+    resetPage();
 }
 if (isset($_POST['task'])) {
     addTask($_POST['task']);
