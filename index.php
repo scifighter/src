@@ -2,7 +2,7 @@
 require_once('store.php');
 require_once('templater.php');
 require_once('file.php');
-$testVar = 'Hello world';
+
 $templateFile = 'view.html';
 
 if (isset($_POST['addSubtask'])) {
