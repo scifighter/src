@@ -14,7 +14,7 @@ function localSave($task, $subTasks) {
         $subTaskName = $value['name'];
         $subTaskHours = $value['hours'];
         $str = "
-_№".$counter."|".$subTaskHours."_часы|_".$subTaskName."
+_№".$counter."| ".$subTaskHours." _часы|_".$subTaskName."
 +----+-------+----------------------------------------------------------------------+";
         fwrite($fd, $str);
         } else {
